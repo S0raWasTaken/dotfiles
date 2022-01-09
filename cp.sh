@@ -6,7 +6,6 @@ cp -r $CONFIG/bspwm/* config/bspwm
 cp -r $CONFIG/flashfocus/* config/flashfocus
 cp -r $CONFIG/picom/* config/picom
 cp -r $CONFIG/ranger/* config/ranger
-cp -r $CONFIG/BetterDiscord/plugins/* config/BetterDiscord/plugins
 cp -r $CONFIG/BetterDiscord/themes/* config/BetterDiscord/themes
 cp -r $CONFIG/dunst/* config/dunst
 cp -r $CONFIG/kitty/* config/kitty
