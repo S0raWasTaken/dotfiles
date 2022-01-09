@@ -1,0 +1,33 @@
+{
+	"general": {
+		"useCrown": true,
+		"useRoleColor": true,
+		"useBlackFont": false,
+		"ignoreBots": false
+	},
+	"inputs": {
+		"ownOwnerTagName": "Owner",
+		"ownGroupOwnerTagName": "Group Owner",
+		"ownThreadCreatorTagName": "Creator",
+		"ownAdminTagName": "Admin",
+		"ownManagementTagName": "Management"
+	},
+	"tagPlaces": {
+		"chat": true,
+		"memberList": true,
+		"voiceList": true,
+		"userPopout": true,
+		"userProfile": true
+	},
+	"tagTypes": {
+		"owners": true,
+		"groupOwners": true,
+		"threadCreators": true,
+		"admins": true,
+		"managementG": true,
+		"managementC": true,
+		"managementR": true,
+		"managementU": true,
+		"managementM": true
+	}
+}
