@@ -1,3 +1,12 @@
+#!/bin/zsh
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle :compinstall filename '/home/s0ra/.zshrc'
+zstyle ':completion:*' menu select
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
+
+autoload -Uz compinit
+compinit
+
 autoload -U colors && colors
 if [[ $TERM = (*256color|*rxvt*) ]]; then
   turquoise="%{${(%):-"%F{81}"}%}"
