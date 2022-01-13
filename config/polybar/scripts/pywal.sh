@@ -61,3 +61,15 @@ if [[ -f "/usr/bin/wal" ]]; then
 else
 	echo "[!] 'pywal' is not installed."
 fi
+
+# Custom
+
+exec_safe() {
+	if [[ -f "/usr/bin/$1" || -f "/usr/local/bin/$1" ]]; then
+		$($1)
+	else
+		echo "[!] '$1' is not installed."
+	fi
+}
+
+exec_safe pywal-discord
