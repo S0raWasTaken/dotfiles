@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# /etc/rc.local -- rc.local for Artix Linux
+#
+# Enter your custom commands here.
+
+/opt/logmein-hamachi/bin/hamachid
