@@ -3,6 +3,7 @@ export EDITOR=micro
 source $HOME/.aliasrc
 source $HOME/.themerc
 source $HOME/zsh-plugins/zsh-autosuggestions.zsh
+source $HOME/zsh-plugins/zsh-syntax-highlighting.zsh
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000
