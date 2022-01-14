@@ -23,7 +23,7 @@ cp -r $HOME/.spacemacs .
 cp -r $HOME/.themerc .
 
 # zsh-plugins
-cp $PLUGINS/* zsh-plugins
+cp -r $PLUGINS/* zsh-plugins
 
 # /etc conf files
 cp /etc/paru.conf etc/
