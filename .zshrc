@@ -4,6 +4,7 @@ source $HOME/.aliasrc
 source $HOME/.themerc
 source $HOME/zsh-plugins/zsh-autosuggestions.zsh
 source $HOME/zsh-plugins/zsh-syntax-highlighting.zsh
+source $HOME/zsh-plugins/autopair.zsh && autopair-init
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000
