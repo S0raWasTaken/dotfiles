@@ -2,6 +2,7 @@
 
 CONFIG="$HOME/.config"
 PLUGINS="$HOME/zsh-plugins"
+EMACSDIR="$HOME/.emacs.d"
 
 # .config dotfiles
 cp -r $CONFIG/alacritty/* config/alacritty
@@ -31,3 +32,6 @@ cp /etc/pacman.conf etc/
 cp /etc/rc.local etc/
 cp /etc/makepkg.conf etc/
 cp /etc/proxychains.conf etc/
+
+# .emacs.d
+cp $EMACSDIR/config.el .emacs.d/config.el
