@@ -11,3 +11,4 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 eq $TTY "/dev/tty1" && startx
+eq $TERM "eterm-color" && bash
