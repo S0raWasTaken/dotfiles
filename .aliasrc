@@ -1,7 +1,7 @@
 #!/bin/sh
 alias wget=aria2c
 alias grep='grep --color=auto'
-alias cp='cp -iv'
+alias cp='cp --backup=existing -iv'
 alias ls='ls --color=auto'
 alias pywal='$HOME/.config/polybar/scripts/pywal.sh'
 alias icat='kitty +kitten icat'
@@ -31,4 +31,16 @@ rust_test() {
 
 yplay() {
 	mpv --input-ipc-server=/tmp/mpvcmd --ytdl-format=bestaudio ytdl://ytsearch:"$1*"
+}
+
+ttyrecord() {
+	ffmpeg -f fbdev -i /dev/$1 -r 24 -c:v libx264 -b:v 500k $2
+}
+
+simple() {
+	SIMPLE=true source ~/.themerc
+}
+
+normal() {
+	SIMPLE="" source ~/.themerc
 }
