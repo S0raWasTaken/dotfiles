@@ -12,6 +12,7 @@ zstyle ':completion:*' completer _expand _complete _ignored _correct _approximat
 zstyle :compinstall filename '/home/s0ra/.zshrc'
 zstyle ':completion:*' menu select
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
+zstyle ':completion:*' rehash true
 
 autoload -Uz compinit
 compinit
@@ -99,5 +100,10 @@ ZSH_THEME_RUBY_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_RVM_PROMPT_OPTIONS="v g"
 
 setopt prompt_subst
-PROMPT=$'%{$purple%}%n%{$reset_color%} at %{$limegreen%}%m%{$reset_color%} in %{$hotpink%}%~%{$reset_color%} $vcs_info_msg_0_
-%{$orange%}水%{$reset_color%} '
+
+if [[ $SIMPLE == "true" ]]; then
+	PROMPT=$'%{$purple%}%n %{$hotpink%}%~%{$reset_color%} '
+else 
+	PROMPT=$'%{$purple%}%n%{$reset_color%} at %{$limegreen%}%m%{$reset_color%} in %{$hotpink%}%~%{$reset_color%} $vcs_info_msg_0_
+%{$orange%}λ%{$reset_color%} '	
+fi
