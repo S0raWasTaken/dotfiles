@@ -274,11 +274,6 @@ It should only modify the values of Spacemacs settings."
                                 :size 11
                                 :weight medium
                                 :width normal
-                                :powerline-scale 1.1)
-                               ("Fira Code Symbol"
-                                :size 16
-                                :weight normal
-                                :width normal
                                 :powerline-scale 1.1))
 
    ;; The leader key (default "SPC")
