@@ -65,11 +65,7 @@ fi
 # Custom
 
 exec_safe() {
-	if [[ -f "/usr/bin/$1" || -f "/usr/local/bin/$1" ]]; then
-		$($1)
-	else
-		echo "[!] '$1' is not installed."
-	fi
+	[[ -f "/usr/bin/$1" || -f "/usr/local/bin/$1" ]] && $($1) || "[!] '$1' is not installed."
 }
 
 exec_safe pywal-discord
