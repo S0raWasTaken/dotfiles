@@ -360,7 +360,7 @@
   :init (global-company-mode)
   :custom
   (company-begin-commands '(self-insert-command))
-  (company-minimum-prefix-length 0)
+  (company-minimum-prefix-length 1)
   (company-idle-delay 0.1)
   (company-show-numbers t)
   (company-tooltip-align-annotations t)
