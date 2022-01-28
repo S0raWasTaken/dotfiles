@@ -2,7 +2,7 @@
 alias wget=aria2c
 alias grep='grep --color=auto'
 alias cp='cp --backup=existing -iv'
-alias ls='ls --color=auto'
+alias ls='lsd'
 alias pywal='$HOME/.config/polybar/scripts/pywal.sh'
 alias icat='kitty +kitten icat'
 alias ranger='TERM=xterm-kitty ranger'
