@@ -2,6 +2,14 @@
  globals--banner-path  "etc/banners/megumacs.png" ; Banner image path shown in the dashboard
  globals--font         "Fantasque Sans Mono 11"   ; Font family and font size
  globals--theme        'gruvbox-custom            ; Theme used by Emacs.
+ redisplay-dont-pause t
+ scroll-margin 1
+ scroll-step 1
+ scroll-conservatively 10000
+ scroll-preserve-screen-position 1
+ mouse-wheel-scroll-amount '(2 ((shift) . 2))
+ mouse-wheel-progressive-speed nil
+ mouse-wheel-follow-mouse 't
  )
 
 (when window-system
@@ -41,7 +49,7 @@
  inhibit-compacting-font-caches t                 ; Faster navigation point (costs more memory)
  recentf-mode t                                   ; Keep recent files
  make-backup-files nil                            ; Stop creating backup files
- display-line-numbers-type 'relative              ; Use relative line numbers
+ display-line-numbers-type 't                     ; Use relative line numbers
  vc-follow-symlinks t
  frame-inhibit-implied-resize nil)                            ; Don't ask for confirmation when opening symlinked file
 (cd "~/")                                         ; Move to the user directory
