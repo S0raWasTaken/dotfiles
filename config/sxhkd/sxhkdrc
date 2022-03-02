@@ -1,6 +1,9 @@
 #
 # wm independent hotkeys
 #
+alt + c
+	/home/s0ra/dev/crypto-list/target/release/crypto-list
+
 alt + m
 	ponymix toggle --input --device alsa_input.usb-Solid_State_System_Co._Ltd._GAMING_HEADSETS_000000000000-00.mono-fallback; \
 	ponymix is-muted --input --device alsa_input.usb-Solid_State_System_Co._Ltd._GAMING_HEADSETS_000000000000-00.mono-fallback && notify-send "Mute"; \
@@ -33,6 +36,8 @@ alt + {@F6, @F7, @F8}
 # Print
 Print
 	flameshot gui
+ctrl + Print
+	sleep 3; flameshot gui
 
 # Start/Kill Polybar
 alt + {_, shift + }p
