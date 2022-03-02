@@ -19,7 +19,8 @@ alias uname=unamec
 alias make="make -j8"
 alias rickroll="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 alias ip='ip --color=auto'
-
+alias clone='git clone'
+alias fuck='killall -s SIGKILL'
 mkcd() {
 	mkdir $1
 	cd $1

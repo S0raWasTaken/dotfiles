@@ -19,19 +19,27 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Nemo state=floating
+bspc rule -a Emacs state=tiled
 
-setxkbmap br,us -option grp:win_space_toggle &
-/usr/lib/cinnamon-settings-daemon/csd-mouse &
-pipewire &
-pipewire-pulse &
-pipewire-media-session &
+exec_safe() {
+	pgrep $1 || $($@) &
+}
+
+exec_safe setxkbmap br,us -option grp:win_space_toggle
+exec_safe /usr/lib/cinnamon-settings-daemon/csd-mouse
+exec_safe pipewire
+exec_safe pipewire-pulse
+exec_safe pipewire-media-session
 sleep 0.2
-$HOME/.config/polybar/launch.sh &
-picom &
-flashfocus &
-wal -R &
-xsetroot -cursor_name left_ptr &
-gnome-keyring-daemon --start --components=secrets &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-xset r rate 300 50 &
-ipfs daemon &
+exec_safe $HOME/.config/polybar/launch.sh
+exec_safe picom
+exec_safe flashfocus
+exec_safe xsetroot -cursor_name left_ptr
+exec_safe gnome-keyring-daemon --start --components=secrets
+exec_safe /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+xset r rate 300 50
+exec_safe ipfs daemon
+exec_safe xrandr --output DisplayPort-1 --mode 1920x1080 --rate 144.00
+exec_safe xwallpaper --zoom $(cat $HOME/.cache/wal/wal)
+exec_safe xfce4-clipman
+exec_safe redshift -l "0:0" -m randr -t 4500K:4500K

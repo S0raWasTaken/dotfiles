@@ -1,4 +1,6 @@
 export EDITOR=micro
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 
 source $HOME/.aliasrc
 source $HOME/.themerc
@@ -10,5 +12,5 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
-eq $TTY "/dev/tty1" && startx
-eq $TERM "eterm-color" && bash
+[ "$TTY" = "/dev/tty1" ] && startx
+[ "$TERM" = "eterm-color" ] && bash
