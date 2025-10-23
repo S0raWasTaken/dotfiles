@@ -1,0 +1,37 @@
+#!/bin/sh
+alias grep='grep --color=auto'
+alias cp='cp --backup=existing -iv'
+alias ls='ls --color=auto'
+alias icat='kitty +kitten icat'
+alias ranger='TERM=xterm-kitty ranger'
+alias free='free -h'
+alias telnet='telnet -e p'
+alias make="make -j32"
+alias rickroll="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
+alias ip='ip --color=auto'
+alias clone='git clone'
+alias fuck='killall -s SIGKILL'
+mkcd() {
+	mkdir $1
+	cd $1
+}
+
+rust_test() {
+	echo $1 | rustc - && ./rust_out && \rm ./rust_out
+}
+
+yplay() {
+	mpv --input-ipc-server=/tmp/mpvcmd --ytdl-format=bestaudio ytdl://ytsearch:"$1*"
+}
+
+ttyrecord() {
+	ffmpeg -f fbdev -i /dev/$1 -r 24 -c:v libx264 -b:v 500k $2
+}
+
+simple() {
+	SIMPLE=true source ~/.themerc
+}
+
+normal() {
+	SIMPLE="" source ~/.themerc
+}

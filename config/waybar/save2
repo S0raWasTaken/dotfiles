@@ -1,0 +1,72 @@
+@define-color foreground #eeeeee;
+@define-color foreground-inactive #aaaaaa;
+@define-color background #000000;
+@define-color module-bg #111111;
+
+* {
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+}
+
+#waybar {
+    color: @foreground;
+    background-color: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: @background;
+    border-radius: 12px;
+    /*adding: 4px 8px;
+    margin: 0 4px;*/
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+#workspaces button {
+    color: @foreground;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 0.4em 0.8em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#workspaces button.empty {
+    color: @foreground-inactive;
+}
+
+#workspaces button.active {
+    background-color: @module-bg;
+}
+
+#memory,
+#custom-platform-profile,
+#wireplumber,
+#battery,
+#idle_inhibitor,
+#language,
+#network,
+#bluetooth,
+#tray {
+    padding: 0.4em 0.9em;
+    border-radius: 8px;
+    background-color: @module-bg;
+    margin: 0 3px;
+    transition: background-color 0.2s ease;
+}
+
+#memory:hover,
+#custom-platform-profile:hover,
+#wireplumber:hover,
+#battery:hover,
+#idle_inhibitor:hover,
+#language:hover,
+#network:hover,
+#bluetooth:hover,
+#tray:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}

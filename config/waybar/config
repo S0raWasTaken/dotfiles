@@ -1,0 +1,130 @@
+{
+	"output": "DP-1",
+    "layer": "top",
+    "position": "top",
+    "height": 20,
+    "spacing": 5,
+    "margin-top": 2,
+    "margin-bottom": -5,
+ 
+    "modules-left": ["hyprland/workspaces", "custom/platform-profile", "custom/gpu-temp"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/spotify", "wireplumber", "network", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "<span size='larger'>{icon}</span>",
+        "on-click": "activate",
+        "all-outputs": false,
+        "format-icons": {
+            "active": "\uf444",
+            "default": "\uf4c3"
+        },
+        "icon-size": 10,
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+        }
+    },
+
+    "clock": {
+        "timezones": ["America/Rio_Branco", "Europe/London"],
+        "format": " <b>{:%H:%M}</b>  ",
+        "calendar": {
+        	"format": {
+        		"months": "<span color='#ffead3'><b>{}</b></span>",
+        		"days": "<span color='#ecc6d9'><b>{}</b></span>",
+        		"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        		"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        		"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        	}
+        },
+        "tooltip-format": "    <b>{:%d.%m.%Y}</b>\n<tt><small>{calendar}</small></tt>\n <b>   光{tz_list}</b>"
+    },
+
+    "wireplumber": {
+        "format": "\udb81\udd7e  {volume}%",
+        "max-volume": 100,
+        "scroll-step": 5
+    },
+
+    "battery": {
+        "bat": "BAT1",
+        "interval": 60,
+        "format": "{icon}  {capacity}%",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "\uf4bc  {used:0.1f}G"
+    },
+
+    "temperature": {
+        "format": "{temperatureC}°C"
+    },
+
+    "custom/gpu-temp": {
+    	"format": " {}°C",
+    	"exec": "echo $(($(cat /sys/class/drm/card0/device/hwmon/hwmon1/temp1_input) / 1000))",
+    	"interval": 2,
+    },
+
+    "network": {
+        "format": "",
+        "format-ethernet": "\udb83\udc9d {ipaddr}",
+        "format-wifi": "{icon}",
+        "format-disconnected": "\udb83\udc9c",
+        "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+    },
+
+    "bluetooth": {
+        "format": "\udb80\udcaf",
+        "format-disabled": "\udb80\udcb2",
+        "format-connected": "\udb80\udcb1",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
+    "hyprland/language": {
+        "format": "{short}"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 16
+    },
+
+    "custom/platform-profile": {
+	"format": "{icon}",
+	"exec": "~/.config/waybar/platform_profile.sh",
+	"return-type": "json",
+	"restart-interval": 1,
+	"format-icons": {
+	    "powersave": "\udb80\udf2a",
+	    "balanced": "\udb80\ude10",
+	    "performance": "\uf427",
+            "default": "?"
+	},
+    },
+
+    
+    "custom/spotify": {
+      "exec": "scr0ll"
+    },
+    
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "\udb80\udd76",
+            "deactivated": "\udb83\udfaa"
+        }
+    }
+}
