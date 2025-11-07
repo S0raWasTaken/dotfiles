@@ -11,6 +11,12 @@ alias rickroll="curl -s -L https://raw.githubusercontent.com/keroserene/rickroll
 alias ip='ip --color=auto'
 alias clone='git clone'
 alias fuck='killall -s SIGKILL'
+alias less='less -R'
+
+obama() {
+    ollama "$@" 2>&1 | sed 's/ollama/obama/g'
+}
+
 mkcd() {
 	mkdir $1
 	cd $1
@@ -34,4 +40,25 @@ simple() {
 
 normal() {
 	SIMPLE="" source ~/.themerc
+}
+
+ask() {
+  local MODEL="${OLLAMA_MODEL:-shir0}"
+  local INPUT=$(printf '%s' "$*" | jq -Rs .)
+  local HOST=localhost
+
+  if ! pgrep -x ollama >/dev/null; then
+    echo "ollama dead. ollama serve &" >&2
+    return 1
+  fi
+  
+  local RESPONSE=$(curl -s http://$HOST:11434/api/generate \
+    -d "{
+      \"model\": \"$MODEL\",
+      \"prompt\": $INPUT,
+      \"stream\": false
+    }" --no-buffer | \
+    jq -j '.response')
+
+  printf '\n%b\n\n' "$RESPONSE" | fold -s -w 80
 }
