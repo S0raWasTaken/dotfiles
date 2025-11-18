@@ -1,0 +1,7 @@
+{
+  "name": "Now Playing",
+  "icon": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\" id=\"wmpotify-nowplaying-icon\" xmlns=\"http://www.w3.org/2000/svg\">\r\n\t<rect x=\"1\" y=\"8\" width=\"3\" height=\"16\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"5\" y=\"13\" width=\"3\" height=\"11\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"9\" y=\"5\" width=\"3\" height=\"19\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"13\" y=\"19\" width=\"3\" height=\"5\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"17\" y=\"2\" width=\"3\" height=\"22\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"21\" y=\"8\" width=\"3\" height=\"16\" fill=\"currentColor\"></rect>\r\n</svg>\r\n",
+  "active-icon": "<svg viewBox=\"0 0 24 24\" fill=\"currentColor\" id=\"wmpotify-nowplaying-icon\" xmlns=\"http://www.w3.org/2000/svg\">\r\n\t<rect x=\"1\" y=\"8\" width=\"3\" height=\"16\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"5\" y=\"13\" width=\"3\" height=\"11\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"9\" y=\"5\" width=\"3\" height=\"19\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"13\" y=\"19\" width=\"3\" height=\"5\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"17\" y=\"2\" width=\"3\" height=\"22\" fill=\"currentColor\"></rect>\r\n\t<rect x=\"21\" y=\"8\" width=\"3\" height=\"16\" fill=\"currentColor\"></rect>\r\n</svg>\r\n",
+  "subfiles": [],
+  "subfiles_extension": []
+}

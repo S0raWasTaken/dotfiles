@@ -42,23 +42,107 @@ normal() {
 	SIMPLE="" source ~/.themerc
 }
 
+#ask() {
+#  local MODEL="${OLLAMA_MODEL:-shir0}"
+#  local INPUT=$(printf '%s' "$*" | jq -Rs .)
+#  local HOST=localhost
+
+#  if ! pgrep -x ollama >/dev/null; then
+#    echo "ollama dead. ollama serve &" >&2
+#    return 1
+#  fi
+  
+#  local RESPONSE=$(curl -s http://$HOST:11434/api/generate \
+#    -d "{
+#      \"model\": \"$MODEL\",
+#      \"prompt\": $INPUT,
+#      \"stream\": false
+#    }" --no-buffer | \
+#    jq -j '.response')
+
+#  printf '\n%b\n\n' "$RESPONSE" | fold -s -w 80
+#}
 ask() {
   local MODEL="${OLLAMA_MODEL:-shir0}"
-  local INPUT=$(printf '%s' "$*" | jq -Rs .)
   local HOST=localhost
+  local HIST="${SHIRO_HISTORY:-$HOME/.shir0_history.txt}"
+  local CLEANED="/tmp/.shir0_context.txt"
+  local INPUT="$*"
 
   if ! pgrep -x ollama >/dev/null; then
     echo "ollama dead. ollama serve &" >&2
     return 1
   fi
-  
-  local RESPONSE=$(curl -s http://$HOST:11434/api/generate \
+  # Append new user message
+  echo "S0ra: $INPUT" >> "$HIST"
+
+  # Prepare clean context (no ANSI, no duplicates, limited lines)
+  sed -E 's/\x1B\[[0-9;]*[A-Za-z]//g; s/^Shir0:\s*//' "$HIST" | tail -n 60 > "$CLEANED"
+  local CONTEXT=$(jq -Rs . < "$CLEANED")
+
+  # Send to Ollama
+  local RESPONSE=$(curl -s "http://$HOST:11434/api/generate" \
     -d "{
       \"model\": \"$MODEL\",
-      \"prompt\": $INPUT,
+      \"prompt\": $CONTEXT,
       \"stream\": false
-    }" --no-buffer | \
-    jq -j '.response')
+    }" --no-buffer | jq -j '.response')
 
+  # Show response (color preserved if model adds it)
   printf '\n%b\n\n' "$RESPONSE" | fold -s -w 80
+
+  # Save response (clean, no ANSI)
+  echo "Shir0: $(printf '%s' "$RESPONSE" | sed -E 's/\x1B\[[0-9;]*[A-Za-z]//g')" >> "$HIST"
+}
+
+# asciic stuff
+asciic-defaults() {
+	local opt
+	local THRESHOLD
+	local OPTARG
+	local STYLE
+	local YOUTUBE
+
+	usage() {
+		echo "\033[33mUsage: asciic-defaults [-t THRESHOLD] [-s PAINT-STYLE] [-y YOUTUBE_LINK] <FILE>"	>&2
+		echo ""																							>&2
+		echo "Run asciic with set defaults for colours."												>&2
+		echo ""																							>&2
+		echo "\033[31m-t THRESHOLD		\033[0mSpecify the colour compression threshold." 				>&2
+		echo "\033[31m-s PAINT-STYLE		\033[0mValid options: [fg-paint, bg-paint, bg-only]." 		>&2
+        echo "\033[31m-y YOUTUBE_LINK		\033[0mA link to a youtube video."                      	>&2
+		echo "\033[31m<FILE>			\033[0mPath to a video file,"									>&2
+		echo "			if -y is present, it'll be used as the output name instead."
+	}
+
+	fatal() {
+		echo '\x1b[31m[fatal]' "$@" "\x1b[0m" >&2
+		usage
+	}
+	
+	local youtube=false
+	while getopts 'y:ht:s:' opt; do
+		case $opt in
+			y) YOUTUBE="-y $OPTARG"; youtube=true;;
+			t) THRESHOLD=$OPTARG;;
+			s) STYLE=$OPTARG;;
+			*) usage; return 1;;
+		esac
+	done
+
+	shift $((OPTIND - 1))
+	
+	local threshold=${THRESHOLD:-3}
+	local style=${STYLE:-fg-paint}
+
+	if [[ ! -f $1 && "$youtube" == "false" ]]; then
+		type=$(stat -c %F -- $1 2>&1)
+		fatal "$1: $type"
+		return 1
+	fi
+
+	output=${1%.*}
+	video=${YOUTUBE:-$1}
+	
+	asciic -c -t $threshold --style $style $1 -o $output
 }

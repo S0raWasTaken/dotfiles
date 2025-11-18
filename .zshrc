@@ -1,7 +1,10 @@
 export EDITOR=micro
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
-export PATH=$PATH:/home/s0ra/.spicetify:/home/s0ra/.cargo/bin:/home/s0ra/.local/bin
+export PATH="$PATH:/home/s0ra/.spicetify:\
+/home/s0ra/.cargo/bin:\
+/home/s0ra/.local/bin:\
+/home/s0ra/.local/share/gem/ruby/3.4.0/bin"
 
 source $HOME/.aliasrc
 source $HOME/.themerc
