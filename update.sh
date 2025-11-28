@@ -17,6 +17,7 @@ cp -urv $HOME/.config/hypr \
         $HOME/.config/spicetify \
         $HOME/.config/waybar \
         $HOME/.config/wofi \
+        $HOME/.config/helix \
         config
 
 cp -urv /etc/rc.local etc
