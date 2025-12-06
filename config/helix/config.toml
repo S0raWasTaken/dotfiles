@@ -1,1 +1,19 @@
 theme = "ayu_evolve"
+
+[keys.normal]
+C-s = ":w"
+C-o = ":open ."
+C-q = ":q"
+
+[keys.insert]
+C-c = "normal_mode"
+C-s = ":w"
+C-q = ":q"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "disable"

@@ -97,52 +97,5 @@ ask() {
 
 # asciic stuff
 asciic-defaults() {
-	local opt
-	local THRESHOLD
-	local OPTARG
-	local STYLE
-	local YOUTUBE
-
-	usage() {
-		echo "\033[33mUsage: asciic-defaults [-t THRESHOLD] [-s PAINT-STYLE] [-y YOUTUBE_LINK] <FILE>"	>&2
-		echo ""																							>&2
-		echo "Run asciic with set defaults for colours."												>&2
-		echo ""																							>&2
-		echo "\033[31m-t THRESHOLD		\033[0mSpecify the colour compression threshold." 				>&2
-		echo "\033[31m-s PAINT-STYLE		\033[0mValid options: [fg-paint, bg-paint, bg-only]." 		>&2
-        echo "\033[31m-y YOUTUBE_LINK		\033[0mA link to a youtube video."                      	>&2
-		echo "\033[31m<FILE>			\033[0mPath to a video file,"									>&2
-		echo "			if -y is present, it'll be used as the output name instead."
-	}
-
-	fatal() {
-		echo '\x1b[31m[fatal]' "$@" "\x1b[0m" >&2
-		usage
-	}
-	
-	local youtube=false
-	while getopts 'y:ht:s:' opt; do
-		case $opt in
-			y) YOUTUBE="-y $OPTARG"; youtube=true;;
-			t) THRESHOLD=$OPTARG;;
-			s) STYLE=$OPTARG;;
-			*) usage; return 1;;
-		esac
-	done
-
-	shift $((OPTIND - 1))
-	
-	local threshold=${THRESHOLD:-3}
-	local style=${STYLE:-fg-paint}
-
-	if [[ ! -f $1 && "$youtube" == "false" ]]; then
-		type=$(stat -c %F -- $1 2>&1)
-		fatal "$1: $type"
-		return 1
-	fi
-
-	output=${1%.*}
-	video=${YOUTUBE:-$1}
-	
-	asciic -c -t $threshold --style $style $1 -o $output
+	asciic -l 470 -c --temp /dev/shm --style mixed -b 0.4 -f catmull-rom $@
 }
