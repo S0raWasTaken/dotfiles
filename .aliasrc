@@ -95,7 +95,27 @@ ask() {
   echo "Shir0: $(printf '%s' "$RESPONSE" | sed -E 's/\x1B\[[0-9;]*[A-Za-z]//g')" >> "$HIST"
 }
 
+vencord-installer() {
+	sh -c "$(curl -sS https://vencord.dev/install.sh)"
+}
+
+bplayer() {
+	bplay $@ 2>/dev/null
+}
+
+genclass() {
+	class_counter $2 generate $1 | wl-copy
+}
+
 # asciic stuff
 asciic-defaults() {
-	asciic -l 470 -c --temp /dev/shm --style mixed -b 0.4 -f catmull-rom $@
+	asciic \
+	-c \
+	-t 0 \
+	-b 0.6 \
+	-f lanczos3 \
+	--style mixed \
+	--temp /dev/shm \
+	--skip-dynamic-compression \
+	$@
 }

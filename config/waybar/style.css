@@ -44,12 +44,13 @@ tooltip {
 	border-radius: 8px;
 }
 
-#memory,
 #custom-platform-profile {
 	background-color: transparent;
 	padding: 0.4em 0.9em;
 }
 #custom-gpu-temp,
+#custom-ram,
+#cpu,
 #custom-spotify,
 #wireplumber,
 #battery,

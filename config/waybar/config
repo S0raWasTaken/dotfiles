@@ -1,15 +1,26 @@
 {
 	"output": "DP-1",
-    "layer": "top",
-    "position": "top",
+    "layer": "bottom",
+    "position": "bottom",
     "height": 20,
     "spacing": 5,
-    "margin-top": 2,
-    "margin-bottom": -5,
+    "margin-top": -8,
+    "margin-bottom": 0,
  
-    "modules-left": ["hyprland/workspaces", "custom/platform-profile", "custom/gpu-temp"],
+    "modules-left": ["hyprland/workspaces", "custom/platform-profile", "custom/gpu-temp", "custom/ram", "cpu"],
     "modules-center": ["clock"],
     "modules-right": ["custom/spotify", "wireplumber", "network", "tray"],
+
+    "cpu": {
+        "format": "  {}%",
+        "interval": 1
+    },
+
+    "custom/ram": {
+        "exec": "/home/s0ra/.config/waybar/ram.sh",
+        "interval": 1,
+        "format": "  {}"
+    },
 
     "hyprland/workspaces": {
         "format": "<span size='larger'>{icon}</span>",
@@ -57,12 +68,12 @@
         "format": "{icon}  {capacity}%",
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
     },
-
+/*
     "memory": {
         "interval": 30,
         "format": "\uf4bc  {used:0.1f}G"
     },
-
+*/
     "temperature": {
         "format": "{temperatureC}°C"
     },
